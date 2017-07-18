@@ -12,9 +12,8 @@
 
     if ($found_user) {
         $response["success"] = true;  
-        $response["name"] = $name;
-        $response["username"] = $username;
-        $response["password"] = $password;
+        $response["name"] = $found_user['name'];
+        $response["username"] = $found_user['username'];
         echo json_encode($response);
     }
 ?>
