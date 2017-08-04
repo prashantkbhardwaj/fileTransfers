@@ -7,7 +7,7 @@
 	  	require_once("includes/db_connection.php");
 	 	$id = date("Ymdhis");
 	 	$path = "uploads/$folder/$id.png";
-	 	$actualpath = "http://www.vit5icnn2018.com/teqniHome/$path";
+	 	$actualpath = "http://192.168.1.101/fileTransfers/teqniHome/$path";
 	 	$sql = "INSERT INTO volleyupload (imgPath, uploader) VALUES ('{$actualpath}','{$uploader}')";
 		if(mysqli_query($conn,$sql)){
 		 	file_put_contents($path,base64_decode($image));
