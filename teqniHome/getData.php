@@ -1,7 +1,10 @@
 <?php require_once("includes/db_connection.php");?>
 <?php require_once("includes/functions.php");?>
 <?php
-	$query = "SELECT * FROM volleyupload";
+	$sessionName = $_POST['sessionName'];
+	$branch = $_POST['branch'];
+	$year = $_POST['year'];
+	$query = "SELECT imgPath FROM volleyupload WHERE sessionName = '{$sessionName}' AND branch = '{$branch}' AND year = '{$year}' ORDER BY id DESC";
 	$result = mysqli_query($conn, $query);
 	$i = 0;
 	$response = array();
