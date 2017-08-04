@@ -10,7 +10,7 @@
 	  	require_once("includes/db_connection.php");
 	 	$id = date("Ymdhis");
 	 	$path = "uploads/$folder/$id.png";
-	 	$actualpath = "http://192.168.1.100/fileTransfers/teqniHome/$path";
+	 	$actualpath = "http://192.168.1.101/fileTransfers/teqniHome/$path";
 	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, branch, year, sessionName) VALUES ('{$actualpath}','{$uploader}', '{$branch}', '{$year}', '{$sessionName}')";
 		if(mysqli_query($conn,$sql)){
 		 	file_put_contents($path,base64_decode($image));
