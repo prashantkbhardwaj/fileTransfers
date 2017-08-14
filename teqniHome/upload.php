@@ -15,7 +15,7 @@
 	 	date_default_timezone_set("Asia/Kolkata");
 		$dateUpload = date("d M, Y | h:i a");
 	 	$path = "uploads/$id.png";
-	 	$actualpath = "http://www.vit5icnn2018.com/teqniHome/$path";
+	 	$actualpath = "http://192.168.1.101/fileTransfers/teqniHome/$path";
 	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, pictureName, sessionName, timeDuration, dateUpload, qrcode) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$pictureName}', '{$sessionName}', '{$timeDuration}', '{$dateUpload}', '{$qrcode}')";
 		if(mysqli_query($conn,$sql)){
 		 	file_put_contents($path,base64_decode($image));
