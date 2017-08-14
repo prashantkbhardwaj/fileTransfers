@@ -1,3 +1,4 @@
 <?php
-echo date("Ymdhis");
+$data = $_GET['data'];
+echo $data;
 ?>
