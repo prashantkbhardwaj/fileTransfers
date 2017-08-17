@@ -1,7 +1,7 @@
 <?php
  	if($_SERVER['REQUEST_METHOD']=='POST'){
  
-	 	$video = $_POST['video'];
+	 	//$video = $_POST['video'];
 	    $uploader = $_POST['uploader'];
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
@@ -13,7 +13,7 @@
 	 	$id = date("Ymdhis");
 	 	date_default_timezone_set("Asia/Kolkata");
 		$dateUpload = date("d M, Y | h:i a");
-	 	$path = "uploads/$video";
+	 	$path = "uploads/$id";
 	 	$actualpath = "http://192.168.1.104/fileTransfers/teqniHome/$path";
 	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, pictureName, sessionName, timeDuration, dateUpload, qrcode) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$pictureName}', '{$sessionName}', '0', '{$dateUpload}', '{$qrcode}')";
 		if(mysqli_query($conn,$sql)){
