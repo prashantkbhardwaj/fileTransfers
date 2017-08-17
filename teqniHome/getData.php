@@ -15,6 +15,7 @@
 		$response[$i]['date'] = $list['dateUpload'];
 		$response[$i]['timeDuration'] = $list['timeDuration'];
 		$response[$i]['tag'] = $list['level1']."-".$list['level2']."-".$list['level3']."-".$list['sessionName'];
+		$response[$i]['postid'] = $list['id'];
 		$i = $i+1;
 	}
 	echo json_encode($response);
