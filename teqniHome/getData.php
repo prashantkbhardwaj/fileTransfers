@@ -7,7 +7,7 @@
 	$response = array();
 	while ($list = mysqli_fetch_assoc($result)) {
 		if ($list['timeDuration']=='0') {
-			$response[$i]['image'] = "http://192.168.1.104/fileTransfers/teqniHome/uploads/video.png";
+			$response[$i]['image'] = "http://192.168.1.102/fileTransfers/teqniHome/uploads/video.png";
 		} else {
 			$response[$i]['image'] = $list['imgPath'];
 		}
