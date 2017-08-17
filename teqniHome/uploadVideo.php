@@ -9,7 +9,7 @@
  $location = "uploads/";
  
  move_uploaded_file($temp_name, $location.$file_name);
- echo "http://192.168.1.101/fileTransfers/teqniHome/uploads/".$file_name;
+ echo "http://192.168.1.104/fileTransfers/teqniHome/uploads/".$file_name;
  }else{
  echo "Error";
  }
