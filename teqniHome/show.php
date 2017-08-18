@@ -137,8 +137,8 @@
         var imgEx = imgSrc.split(',');
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
-        var vidAr;
-        var galleryarray;
+        var vidAr = new Array();
+        var galleryarray = new Array();
         for (var i = 0; i < vidEx.length - 1; i++) {
             vidAr[i] = vidEx[i];
         }
