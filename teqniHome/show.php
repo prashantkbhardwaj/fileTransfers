@@ -10,6 +10,7 @@
 
     $query = "SELECT * FROM volleyupload WHERE level1 = '{$level1}' AND level2 = '{$level2}' AND level3 = '{$level3}' AND sessionName = '{$sessionName}'";
     $result = mysqli_query($conn, $query);
+    $resultVid = mysqli_query($conn, $query);
     $timeResult = mysqli_query($conn, $query);
     confirm_query($timeResult);
     confirm_query($result);
@@ -57,19 +58,25 @@
     <section id="intro">
     <div class="video-content">  
     <div class="video-image wp1 delay-1s">
+    <div id="slideshow" class="img-responsive"></div>
+    <textarea style="display:none;" id="imgSrc" >
         <?php
             while ($list = mysqli_fetch_assoc($result)) { 
-                if ($list['timeDuration']!='0') { ?>
-                    <img class="mySlides w3-animate-fading" src="<?php echo $list['imgPath']; ?>">
-                    <?php
-                } else { ?>
-                    <video src="<?php echo $list['imgPath']; ?>" autoplay controls>
-                        Your browser does not support the video tag.
-                    </video>
-                    <?php
-                }
+                if ($list['timeDuration']!='0') { 
+                    echo "img('".$list['imgPath']."'),";
+                } 
             }
         ?>
+    </textarea>
+    <textarea style="display:none;" id="vidSrc" >
+        <?php
+            while ($listVid = mysqli_fetch_assoc($resultVid)) { 
+                if ($listVid['timeDuration']=='0') { 
+                    echo "'".$listVid['imgPath']."',";
+                } 
+            }
+        ?>
+    </textarea>
     </div>
     <input type="hidden" id="timeDuration" value="<?php
         while ($timeList = mysqli_fetch_assoc($timeResult)) {
@@ -100,26 +107,84 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/main.js"></script>
     <script>
-        var myIndex = 0;
-        var myIndex2 = 0;
-        var timeDuration = document.getElementById("timeDuration").value;
-        var arr = timeDuration.split(",");
-        for (var i = 0; i < arr.length-1; i++) {
-            arr[i] = parseInt(arr[i], 10);
+        function img(src) {
+            var el = document.createElement('img');
+            el.src = src;
+            return el;
         }
-        console.log(arr);
-        carousel();
-        
-        function carousel() {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            for (i = 0; i < x.length; i++) {
-               x[i].style.display = "none";  
+
+        function vid() {
+            //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
+            var el = document.createElement('video');
+            var source = document.createElement('source');
+            for (var i = 0; i < arguments.length; i++) {
+                source.src = arguments[i];
+                source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+                el.appendChild(source);
             }
-            myIndex++;
-            if (myIndex > x.length) {myIndex = 1}    
-            x[myIndex-1].style.display = "block";  
-            setTimeout(carousel, arr[myIndex2++ %(arr.length-1)]);    
+            el.onplay = function () {
+                clearInterval(sliding);
+            };
+            el.onended = function () {
+                sliding = setInterval(rotateimages, 5000);
+                rotateimages();
+            };
+            return el;
+        }
+
+        var imgSrc = document.getElementById("imgSrc").value;
+        var imgEx = imgSrc.split(',');
+        var vidSrc = document.getElementById("vidSrc").value;
+        var vidEx = vidSrc.split(',');
+        var vidAr;
+        for (var i = 0; i < vidEx.length - 1; i++) {
+            vidAr[i] = vidEx[i];
+        }
+        vidSrc = "vid("+vidAr.toString()+")";
+        var galleryarray;
+        for (var i = 0; i < imgEx.length - 1; i++) {
+            galleryarray[i] = imgEx[i];
+        }
+        galleryarray.push(vidSrc);
+
+        // var galleryarray = [img('http://lorempixel.com/400/100/'),
+        //                     img('http://lorempixel.com/400/200/'),
+        //                     img('http://lorempixel.com/400/300/'),
+        //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
+        //                    ];
+        var curimg = 1;
+
+        function rotateimages() {
+            $("#slideshow").fadeOut("slow");
+            setTimeout(function () {
+                curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
+                document.getElementById('slideshow').innerHTML = '';
+                galleryarray[curimg].style.width = "100%";
+                galleryarray[curimg].style.height = "100%";
+                document.getElementById('slideshow').appendChild(galleryarray[curimg]);
+                if (galleryarray[curimg].tagName === "VIDEO") {
+                    galleryarray[curimg].play();
+                }
+                $("#slideshow").fadeIn("slow");
+            }, 1000);
+        }
+
+        var sliding;
+        window.onload = function () {
+            sliding = setInterval(rotateimages, 5000);
+            rotateimages();
+            //FullScreen won't work in jsFiddle's iframe
+            document.getElementById('slideshow').onclick = function () {
+                if (this.requestFullscreen) {
+                    this.requestFullscreen();
+                } else if (this.msRequestFullscreen) {
+                    this.msRequestFullscreen();
+                } else if (this.mozRequestFullScreen) {
+                    this.mozRequestFullScreen();
+                } else if (this.webkitRequestFullscreen) {
+                    this.webkitRequestFullscreen();
+                }
+            }
         }
     </script>
     <script type="text/javascript">
