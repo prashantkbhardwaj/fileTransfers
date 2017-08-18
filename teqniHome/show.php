@@ -148,8 +148,8 @@
             galleryarray[i] = imgEx[i];
         }
         galleryarray.push(vidSrc);
-        console.log(imgEx);
-        console.log(vidAr);
+        console.log(galleryarray);
+       // console.log(vidAr);
 
         // var galleryarray = [img('http://lorempixel.com/400/100/'),
         //                     img('http://lorempixel.com/400/200/'),
