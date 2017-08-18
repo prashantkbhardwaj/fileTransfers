@@ -138,16 +138,18 @@
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
         var vidAr;
+        var galleryarray;
         for (var i = 0; i < vidEx.length - 1; i++) {
             vidAr[i] = vidEx[i];
         }
         vidSrc = "vid("+vidAr.toString()+")";
-        var galleryarray;
+        
         for (var i = 0; i < imgEx.length - 1; i++) {
             galleryarray[i] = imgEx[i];
         }
         galleryarray.push(vidSrc);
-        console.log(galleryarray);
+        console.log(imgEx);
+        console.log(vidAr);
 
         // var galleryarray = [img('http://lorempixel.com/400/100/'),
         //                     img('http://lorempixel.com/400/200/'),
