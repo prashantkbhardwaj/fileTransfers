@@ -148,6 +148,9 @@
             galleryarray[i] = imgEx[i];
         }
         galleryarray.push(vidSrc);
+        for (var i = 0; i < galleryarray.length; i++) {
+            galleryarray[i] = galleryarray[i]..replace(/"/g, "");
+        }
         console.log(galleryarray);
        // console.log(vidAr);
 
