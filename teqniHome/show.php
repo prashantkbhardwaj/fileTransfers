@@ -58,9 +58,16 @@
     <div class="video-content">  
     <div class="video-image wp1 delay-1s">
         <?php
-            while ($list = mysqli_fetch_assoc($result)) { ?>
-                <img class="mySlides w3-animate-fading" src="<?php echo $list['imgPath']; ?>">
-            <?php    
+            while ($list = mysqli_fetch_assoc($result)) { 
+                if ($list['timeDuration']!='0') { ?>
+                    <img class="mySlides w3-animate-fading" src="<?php echo $list['imgPath']; ?>">
+                    <?php
+                } else { ?>
+                    <video src="<?php echo $list['imgPath']; ?>" autoplay controls>
+                        Your browser does not support the video tag.
+                    </video>
+                    <?php
+                }
             }
         ?>
     </div>
