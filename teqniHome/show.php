@@ -140,12 +140,12 @@
         var vidAr = new Array();
         var galleryarray = new Array();
         for (var i = 0; i < vidEx.length - 1; i++) {
-            vidAr[i] = vidEx[i];
+            vidAr[i] = vidEx[i].replace(/"/g, "");
         }
         vidSrc = "vid("+vidAr.toString()+")";
         
         for (var i = 0; i < imgEx.length - 1; i++) {
-            galleryarray[i] = imgEx[i];
+            galleryarray[i] = imgEx[i].replace(/"/g, "");
         }
         galleryarray.push(vidSrc);
         for (var i = 0; i < galleryarray.length; i++) {
