@@ -134,16 +134,17 @@
         }
 
         var imgSrc = document.getElementById("imgSrc").value;
-        console.log(imgSrc);
+        // console.log(imgSrc);
         var imgEx = imgSrc.split(',');
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
         
-        for (var i = 0; i < imgEx.length - 2; i++) {
+        for (var i = 0; i < imgEx.length - 1; i++) {
+            console.log(imgEx[i].trim());
             galleryarray.push(img(imgEx[i].trim()));
         }
-        for (var i = 0; i < vidEx.length - 2; i++) {
+        for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
         }
         //galleryarray.push(vidSrc);
