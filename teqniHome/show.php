@@ -101,10 +101,11 @@
     var index = 0;
     var timeDuration = document.getElementById("timeDuration").value;
     var arr = timeDuration.split(',');
+    var aru = [];
     for (var i = 0; i < arr.length-1; i++) {
-        arr[i] = parseInt(arr[i], 10)
+        aru.push(parseInt(arr[i], 10));
     }
-    console.log(arr);
+    console.log(aru);
     window.onload = function () {
         sliding = setInterval(rotateimages, 5000);
         rotateimages();
