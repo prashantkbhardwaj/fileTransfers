@@ -64,7 +64,7 @@
         <?php
             while ($list = mysqli_fetch_assoc($result)) { 
                 if ($list['timeDuration']!='0') { 
-                    echo "img('".$list['imgPath']."'),";
+                    echo $list['imgPath'];
                 } 
             }
         ?>
@@ -73,7 +73,7 @@
         <?php
             while ($listVid = mysqli_fetch_assoc($resultVid)) { 
                 if ($listVid['timeDuration']=='0') { 
-                    echo "'".$listVid['imgPath']."',";
+                    echo $listVid['imgPath'];
                 } 
             }
         ?>
@@ -133,33 +133,29 @@
             return el;
         }
 
-        // var imgSrc = document.getElementById("imgSrc").value;
-        // var imgEx = imgSrc.split(',');
-        // var vidSrc = document.getElementById("vidSrc").value;
-        // var vidEx = vidSrc.split(',');
-        // var vidAr = new Array();
-        // var galleryarray = new Array();
-        // for (var i = 0; i < vidEx.length - 1; i++) {
-        //     vidAr[i] = vidEx[i];
-        // }
-        // vidSrc = "vid("+vidAr.toString()+")";
+        var imgSrc = document.getElementById("imgSrc").value;
+        var imgEx = imgSrc.split(',');
+        var vidSrc = document.getElementById("vidSrc").value;
+        var vidEx = vidSrc.split(',');
+        var galleryarray = new Array();
         
-        // for (var i = 0; i < imgEx.length - 1; i++) {
-        //     galleryarray[i] = imgEx[i];
-        // }
-        // galleryarray.push(vidSrc);
-        // for (var i = 0; i < galleryarray.length; i++) {
-        //     galleryarray[i] = galleryarray[i].replace(/"/g, "");
-        //     console.log(galleryarray[i].replace(/"/g, ""));
-        // }
-       // console.log(galleryarray);
-       // console.log(vidAr);
+        for (var i = 0; i < imgEx.length - 1; i++) {
+            galleryarray.push(img(imgEx[i]));
+        }
+        for (var i = 0; i < vidEx.length - 1; i++) {
+            galleryarray.push(vid(vidEx[i]));
+        }
+        galleryarray.push(vidSrc);
+       // vidSrc = vid(idAr.toString());
+    
+       console.log(galleryarray);
+       //console.log(vidAr);
 
-        var galleryarray = [img('http://lorempixel.com/400/100/'),
-                            img('http://lorempixel.com/400/200/'),
-                            img('http://lorempixel.com/400/300/'),
-                            vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
-                           ];
+        // var galleryarray = [img('http://lorempixel.com/400/100/'),
+        //                     img('http://lorempixel.com/400/200/'),
+        //                     img('http://lorempixel.com/400/300/'),
+        //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
+        //                    ];
 
         console.log(galleryarray);               
         var curimg = 1;
