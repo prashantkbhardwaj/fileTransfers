@@ -97,6 +97,24 @@
         return el;
     }
 
+    var sliding;
+    window.onload = function () {
+        sliding = setInterval(rotateimages, 5000);
+        rotateimages();
+        //FullScreen won't work in jsFiddle's iframe
+        document.getElementById('slideshow').onclick = function () {
+            if (this.requestFullscreen) {
+                this.requestFullscreen();
+            } else if (this.msRequestFullscreen) {
+                this.msRequestFullscreen();
+            } else if (this.mozRequestFullScreen) {
+                this.mozRequestFullScreen();
+            } else if (this.webkitRequestFullscreen) {
+                this.webkitRequestFullscreen();
+            }
+        }
+    }
+
     function vid() {
         //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
         var el = document.createElement('video');
@@ -104,8 +122,6 @@
         for (var i = 0; i < arguments.length; i++) {
             source.src = arguments[i];
             source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
-            el.autoplay=true;
-            el.loop = true;
             el.appendChild(source);
         }
         el.onplay = function () {
@@ -140,24 +156,6 @@
             }
             $("#slideshow").fadeIn("slow");
         }, 1000);
-    }
-
-    var sliding;
-    window.onload = function () {
-        sliding = setInterval(rotateimages, 5000);
-        rotateimages();
-        //FullScreen won't work in jsFiddle's iframe
-        document.getElementById('slideshow').onclick = function () {
-            if (this.requestFullscreen) {
-                this.requestFullscreen();
-            } else if (this.msRequestFullscreen) {
-                this.msRequestFullscreen();
-            } else if (this.mozRequestFullScreen) {
-                this.mozRequestFullScreen();
-            } else if (this.webkitRequestFullscreen) {
-                this.webkitRequestFullscreen();
-            }
-        }
     }
     </script>
     <script type="text/javascript">
