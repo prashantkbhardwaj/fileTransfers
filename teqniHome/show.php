@@ -103,7 +103,7 @@
     var arr = timeDuration.split(',');
     var aru = [];
     for (var i = 0; i < arr.length-1; i++) {
-        aru.push(parseInt(arr[i], 10));
+        if(arr[i]) aru.push(parseInt(arr[i], 10));
     }
     console.log(aru);
     window.onload = function () {
