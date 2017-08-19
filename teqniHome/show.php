@@ -98,8 +98,14 @@
     }
 
     var sliding;
+    var index = 0;
+    var timeDuration = document.getElementById("timeDuration").value;
+    var arr = timeDuration.split(',');
+    for (var i = 0; i < arr.length-1; i--) {
+        arr[i] = parseInt(arr[i], 10);
+    }
     window.onload = function () {
-        sliding = setInterval(rotateimages, 5000);
+        sliding = setInterval(rotateimages, arr[index++ %(arr.length-1)]);
         rotateimages();
         //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
@@ -128,7 +134,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, 5000);
+            sliding = setInterval(rotateimages, arr[index++ %(arr.length-1)]);
             rotateimages();
         };
         return el;
