@@ -140,10 +140,10 @@
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
         
-        for (var i = 0; i < imgEx.length - 1; i++) {
+        for (var i = 0; i < imgEx.length - 2; i++) {
             galleryarray.push(img(imgEx[i].trim()));
         }
-        for (var i = 0; i < vidEx.length - 1; i++) {
+        for (var i = 0; i < vidEx.length - 2; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
         }
         //galleryarray.push(vidSrc);
