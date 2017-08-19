@@ -136,8 +136,8 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            console.log(curimg%(curimg.length));
-            console.log(arr[curimg%(curimg.length)]);
+            console.log(Number(curimg)%(curimg.length));
+            console.log(arr[Number(curimg%(curimg.length))]);
             sliding = setInterval(rotateimages, arr[curimg%(curimg.length)]);
             rotateimages();
         };
