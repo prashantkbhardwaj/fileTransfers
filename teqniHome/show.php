@@ -126,75 +126,71 @@
        // vidSrc = vid(idAr.toString());
      //  galleryarray.push(vid('http://192.168.1.100/fileTransfers/teqniHome/uploads/VID_22471003_171758_571.mp4'));
         function img(src) {
-            var el = document.createElement('img');
-            el.src = src;
-            return el;
+        var el = document.createElement('img');
+        el.src = src;
+        return el;
+    }
+
+    function vid() {
+        //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
+        var el = document.createElement('video');
+        var source = document.createElement('source');
+        for (var i = 0; i < arguments.length; i++) {
+            source.src = arguments[i];
+            source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+            el.appendChild(source);
         }
-
-        function vid() {
-            //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
-            var el = document.createElement('video');
-            var source = document.createElement('source');
-            for (var i = 0; i < arguments.length; i++) {
-                source.src = arguments[i];
-                source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
-                el.appendChild(source);
-            }
-            el.onplay = function () {
-                clearInterval(sliding);
-            };
-            el.onended = function () {
-                sliding = setInterval(rotateimages, 5000);
-                rotateimages();
-            };
-            return el;
-        }
-
-
-
-      // console.log(galleryarray);
-
-
-        var galleryarray = [img('http://lorempixel.com/400/100/'),
-                            img('http://lorempixel.com/400/200/'),
-                            img('http://lorempixel.com/400/300/'),
-                            vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
-                           ];
-               
-        var curimg = 1;
-
-        function rotateimages() {
-            $("#slideshow").fadeOut("slow");
-            setTimeout(function () {
-                curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
-                document.getElementById('slideshow').innerHTML = '';
-                galleryarray[curimg].style.width = "100%";
-                galleryarray[curimg].style.height = "100%";
-                document.getElementById('slideshow').appendChild(galleryarray[curimg]);
-                if (galleryarray[curimg].tagName === "VIDEO") {
-                    galleryarray[curimg].play();
-                }
-                $("#slideshow").fadeIn("slow");
-            }, 1000);
-        }
-
-        var sliding;
-        window.onload = function () {
+        el.onplay = function () {
+            clearInterval(sliding);
+        };
+        el.onended = function () {
             sliding = setInterval(rotateimages, 5000);
             rotateimages();
-            //FullScreen won't work in jsFiddle's iframe
-            document.getElementById('slideshow').onclick = function () {
-                if (this.requestFullscreen) {
-                    this.requestFullscreen();
-                } else if (this.msRequestFullscreen) {
-                    this.msRequestFullscreen();
-                } else if (this.mozRequestFullScreen) {
-                    this.mozRequestFullScreen();
-                } else if (this.webkitRequestFullscreen) {
-                    this.webkitRequestFullscreen();
-                }
+        };
+        return el;
+    }
+
+    var galleryarray = [img('http://lorempixel.com/400/100/'),
+                        img('http://lorempixel.com/400/200/'),
+                        img('http://lorempixel.com/400/300/'),
+                        vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
+                       ];
+
+                       console.log(galleryarray);
+    var curimg = 1;
+
+    function rotateimages() {
+        $("#slideshow").fadeOut("slow");
+        setTimeout(function () {
+            curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
+            document.getElementById('slideshow').innerHTML = '';
+            galleryarray[curimg].style.width = "100%";
+            galleryarray[curimg].style.height = "100%";
+            document.getElementById('slideshow').appendChild(galleryarray[curimg]);
+            if (galleryarray[curimg].tagName === "VIDEO") {
+                galleryarray[curimg].play();
+            }
+            $("#slideshow").fadeIn("slow");
+        }, 1000);
+    }
+
+    var sliding;
+    window.onload = function () {
+        sliding = setInterval(rotateimages, 5000);
+        rotateimages();
+        //FullScreen won't work in jsFiddle's iframe
+        document.getElementById('slideshow').onclick = function () {
+            if (this.requestFullscreen) {
+                this.requestFullscreen();
+            } else if (this.msRequestFullscreen) {
+                this.msRequestFullscreen();
+            } else if (this.mozRequestFullScreen) {
+                this.mozRequestFullScreen();
+            } else if (this.webkitRequestFullscreen) {
+                this.webkitRequestFullscreen();
             }
         }
+    }
     </script>
     <script type="text/javascript">
         function initialize()
