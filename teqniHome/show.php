@@ -50,7 +50,7 @@
 </head>
 
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="initialize();">
 
 	<!-- Navigation -->
 
@@ -109,16 +109,16 @@
     <script src="js/main.js"></script>
     <script>
 
-        var imgSrc = document.getElementById("imgSrc").value;
-        // console.log(imgSrc);
-        var imgEx = imgSrc.split(',');
-        var vidSrc = document.getElementById("vidSrc").value;
-        var vidEx = vidSrc.split(',');
-        var galleryarray = new Array();
+        // var imgSrc = document.getElementById("imgSrc").value;
+        // // console.log(imgSrc);
+        // var imgEx = imgSrc.split(',');
+        // var vidSrc = document.getElementById("vidSrc").value;
+        // var vidEx = vidSrc.split(',');
+        // var galleryarray = new Array();
         
-        for (var i = 0; i < imgEx.length - 1; i++) {
-            galleryarray.push(img(imgEx[i].trim()));
-        }
+        // for (var i = 0; i < imgEx.length - 1; i++) {
+        //     galleryarray.push(img(imgEx[i].trim()));
+        // }
         // for (var i = 0; i < vidEx.length - 1; i++) {
         //     galleryarray.push(vid(vidEx[i].trim()));
         // }
@@ -152,14 +152,14 @@
 
 
 
-       console.log(galleryarray);
+      // console.log(galleryarray);
 
 
-        // var galleryarray = [img('http://lorempixel.com/400/100/'),
-        //                     img('http://lorempixel.com/400/200/'),
-        //                     img('http://lorempixel.com/400/300/'),
-        //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
-        //                    ];
+        var galleryarray = [img('http://lorempixel.com/400/100/'),
+                            img('http://lorempixel.com/400/200/'),
+                            img('http://lorempixel.com/400/300/'),
+                            vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
+                           ];
                
         var curimg = 1;
 
@@ -197,17 +197,17 @@
         }
     </script>
     <script type="text/javascript">
-        // function initialize()
-        // {        
-        //     $(document).ready(function() {
-        //         $("#listencontainer").load("listenStop.php");
-        //         var listenId = setInterval(function() {
-        //             $("#listencontainer").load('listenStop.php?randval='+ Math.random());
+        function initialize()
+        {        
+            $(document).ready(function() {
+                $("#listencontainer").load("listenStop.php");
+                var listenId = setInterval(function() {
+                    $("#listencontainer").load('listenStop.php?randval='+ Math.random());
                                                        
-        //         }, 1000);
-        //         $.ajaxSetup({ cache: false});       
-        //     }); 
-        // }    
+                }, 1000);
+                $.ajaxSetup({ cache: false});       
+            }); 
+        }    
     </script>
 </body>
 
