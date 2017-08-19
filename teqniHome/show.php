@@ -149,10 +149,6 @@
         }
         //galleryarray.push(vidSrc);
        // vidSrc = vid(idAr.toString());
-
-
-        console.log(imgEx);
-        console.log(vidEx); 
        console.log(galleryarray);
 
 
@@ -167,6 +163,7 @@
         function rotateimages() {
             $("#slideshow").fadeOut("slow");
             setTimeout(function () {
+                galleryarray[curimg].pause();
                 curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
                 document.getElementById('slideshow').innerHTML = '';
                 galleryarray[curimg].style.width = "100%";
