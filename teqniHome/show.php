@@ -117,7 +117,6 @@
         var galleryarray = new Array();
         
         for (var i = 0; i < imgEx.length - 1; i++) {
-            console.log(imgEx[i].trim());
             galleryarray.push(img(imgEx[i].trim()));
         }
         // for (var i = 0; i < vidEx.length - 1; i++) {
@@ -125,7 +124,7 @@
         // }
         //galleryarray.push(vidSrc);
        // vidSrc = vid(idAr.toString());
-       galleryarray.push(vid('http://192.168.1.100/fileTransfers/teqniHome/uploads/VID_22471003_171758_571.mp4'));
+     //  galleryarray.push(vid('http://192.168.1.100/fileTransfers/teqniHome/uploads/VID_22471003_171758_571.mp4'));
         function img(src) {
             var el = document.createElement('img');
             el.src = src;
