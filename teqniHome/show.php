@@ -129,9 +129,8 @@
     var imageCount = 0;
     
     function rotateimages() {
-        $("#slideshow").fadeOut("slow");
         currentSlide = (currentSlide + 1) % galleryarray.length;
-        console.log("currentSlide " + currentSlide);
+        //console.log("currentSlide " + currentSlide);
         document.getElementById('slideshow').innerHTML = '';
         galleryarray[currentSlide].style.width = "50%";
         galleryarray[currentSlide].style.height = "50%";
@@ -142,16 +141,15 @@
         else {
             setTimeout(rotateimages, aru[imageCount]);
             imageCount = (imageCount + 1) % aru.length;
-            console.log("imageCount " + imageCount);
+            //console.log("imageCount " + imageCount);
         }
-        $("#slideshow").fadeIn("slow");
     }
 
     var sliding;
     var index1 = 0;
     window.onload = function () {
-        console.log(aru);
-        console.log(galleryarray);
+        //console.log(aru);
+        //console.log(galleryarray);
 
         rotateimages();
         
