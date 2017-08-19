@@ -120,7 +120,7 @@
         };
         var index = 0;
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index++ %(aru.length)];
+            sliding = setInterval(rotateimages, aru[index++ %(aru.length)]);
             rotateimages();
         };
         return el;
