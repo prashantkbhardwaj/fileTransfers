@@ -101,7 +101,7 @@
     var index = 0;
     var timeDuration = document.getElementById("timeDuration").value;
     var arr = timeDuration.split(',');
-    for (var i = 0; i < arr.length-1; i--) {
+    for (var i = 0; i < arr.length-1; i++) {
         arr[i] = parseInt(arr[i], 10)
     }
     console.log(arr);
