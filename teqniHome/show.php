@@ -138,9 +138,6 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            console.log(curimg);
-            console.log(Number(curimg)%(aru.length));
-            console.log(aru[Number(curimg%(aru.length))]);
             sliding = setInterval(rotateimages, aru[++curimg%(aru.length)]);
             rotateimages();
         };
