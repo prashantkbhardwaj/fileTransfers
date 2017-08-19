@@ -139,19 +139,20 @@
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
         
-        for (var i = 0; i < imgEx.length - 1; i++) {
-            galleryarray.push(img(imgEx[i]));
+        for (var i = 0; i < imgEx.length; i++) {
+            galleryarray.push(img(imgEx[i].trim()));
         }
-        for (var i = 0; i < vidEx.length - 1; i++) {
-            galleryarray.push(vid(vidEx[i]));
+        for (var i = 0; i < vidEx.length; i++) {
+            galleryarray.push(vid(vidEx[i].trim()));
         }
         //galleryarray.push(vidSrc);
        // vidSrc = vid(idAr.toString());
 
 
         console.log(imgEx);
+        console.log(vidEx); 
        console.log(galleryarray);
-       //console.log(vidAr);
+
 
         // var galleryarray = [img('http://lorempixel.com/400/100/'),
         //                     img('http://lorempixel.com/400/200/'),
