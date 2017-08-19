@@ -134,6 +134,7 @@
         }
 
         var imgSrc = document.getElementById("imgSrc").value;
+        console.log(imgSrc);
         var imgEx = imgSrc.split(',');
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
