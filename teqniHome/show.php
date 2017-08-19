@@ -152,10 +152,6 @@
             galleryarray[curimg].style.height = "50%";
             document.getElementById('slideshow').appendChild(galleryarray[curimg]);
             if (galleryarray[curimg].tagName === "VIDEO") {
-                let videos = document.getElementsByTagName('video');
-                videos.foreach(function(vid){
-                    vid.pause();
-                });
                 if(galleryarray[curimg].paused) galleryarray[curimg].play();
             }
             $("#slideshow").fadeIn("slow");
