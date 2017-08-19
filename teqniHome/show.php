@@ -169,7 +169,7 @@ confirm_query($result);
                 galleryarray[curimg].style.height = "100%";
                 document.getElementById('slideshow').appendChild(galleryarray[curimg]);
                 if (galleryarray[curimg].tagName === "VIDEO") {
-                    let isPlaying = video.currentTime > 0 && !video.paused && !video.ended && video.readyState > 2;
+                    let isPlaying = galleryarray[curimg].currentTime > 0 && !galleryarray[curimg].paused && !galleryarray[curimg].ended && galleryarray[curimg].readyState > 2;
                     if(!isPlaying) galleryarray[curimg].play();
                 }
                 $("#slideshow").fadeIn("slow");
