@@ -123,7 +123,7 @@
         }
     }
 
-    var curimg = 1;
+    var curimg = 0;
 
     function vid() {
         //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
