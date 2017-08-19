@@ -145,7 +145,7 @@
         for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i]));
         }
-        galleryarray.push(vidSrc);
+        //galleryarray.push(vidSrc);
        // vidSrc = vid(idAr.toString());
     
        console.log(galleryarray);
