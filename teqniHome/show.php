@@ -91,21 +91,59 @@
             galleryarray.push(img(imgEx[i].trim()));
         }
 
+        var index = 0;
+        var timeDuration = document.getElementById("timeDuration").value;
+        var arr = timeDuration.split(',');
+        var aru = [];
+        for (var i = 0; i < arr.length-1; i++) {
+            if(Number(arr[i])) aru.push(parseInt(arr[i], 10));
+        }
+        console.log(aru);
+
         function img(src) {
         var el = document.createElement('img');
         el.src = src;
         return el;
     }
 
-    var sliding;
-    var index = 0;
-    var timeDuration = document.getElementById("timeDuration").value;
-    var arr = timeDuration.split(',');
-    var aru = [];
-    for (var i = 0; i < arr.length-1; i++) {
-        if(Number(arr[i])) aru.push(parseInt(arr[i], 10));
+    function vid() {
+        //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
+        var el = document.createElement('video');
+        var source = document.createElement('source');
+        for (var i = 0; i < arguments.length; i++) {
+            source.src = arguments[i];
+            source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+            el.appendChild(source);
+        }
+        el.onplay = function () {
+            clearInterval(sliding);
+        };
+        el.onended = function () {
+            sliding = setInterval(rotateimages, aru[index++]);
+            rotateimages();
+        };
+        return el;
     }
-    console.log(aru);
+
+    var curimg = 1;
+
+    function rotateimages() {
+        $("#slideshow").fadeOut("slow");
+        setTimeout(function () {
+            curimg = (curimg < galleryarray.length-1) ? curimg + 1 : 0;
+            console.log(curimg);
+            document.getElementById('slideshow').innerHTML = '';
+            galleryarray[curimg].style.width = "50%";
+            galleryarray[curimg].style.height = "50%";
+            document.getElementById('slideshow').appendChild(galleryarray[curimg]);
+            if (galleryarray[curimg].tagName === "VIDEO") {
+                if(galleryarray[curimg].paused) galleryarray[curimg].play();
+            }
+            $("#slideshow").fadeIn("slow");
+        }, 1000);
+    }
+
+    var sliding;
     window.onload = function () {
         sliding = setInterval(rotateimages, aru[index++]);
         rotateimages();
@@ -122,50 +160,7 @@
             }
         }
     }
-
-    var curimg = 0;
-    var index1 = 0;
-    function vid() {
-        //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
-        var el = document.createElement('video');
-        var source = document.createElement('source');
-        for (var i = 0; i < arguments.length; i++) {
-            source.src = arguments[i];
-            source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
-            el.appendChild(source);
-        }
-        el.onplay = function () {
-            clearInterval(sliding);
-        };
-        el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index1++]);
-            rotateimages();
-        };
-        return el;
-    }
-
-    // var galleryarray = [img('http://lorempixel.com/400/100/'),
-    //                     img('http://lorempixel.com/400/200/'),
-    //                     img('http://lorempixel.com/400/300/'),
-    //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
-    //                    ];
-
-    console.log(galleryarray);
-    function rotateimages() {
-        $("#slideshow").fadeOut("slow");
-        setTimeout(function () {
-            curimg = (curimg < galleryarray.length-1) ? curimg + 1 : 0;
-            console.log(curimg);
-            document.getElementById('slideshow').innerHTML = '';
-            galleryarray[curimg].style.width = "50%";
-            galleryarray[curimg].style.height = "50%";
-            document.getElementById('slideshow').appendChild(galleryarray[curimg]);
-            if (galleryarray[curimg].tagName === "VIDEO") {
-                if(galleryarray[curimg].paused) galleryarray[curimg].play();
-            }
-            $("#slideshow").fadeIn("slow");
-        }, 1000);
-    }
+    
     </script>
     <script type="text/javascript">
         function initialize()
