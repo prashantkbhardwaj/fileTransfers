@@ -27,38 +27,21 @@
     <title>Slide Show</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
-
-    <!-- Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-    <!-- Custom Theme CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/glow.css">
+    
    
     <!-- Advanced CSS -->
-    <link href="css/animate.css" rel="stylesheet">
-	<link href="js/lib/owl-carousel/owl.carousel.css" rel="stylesheet">
-	<link href="js/lib/owl-carousel/owl.theme.css" rel="stylesheet">
-	<link href="js/lib/owl-carousel/owl.transitions.css" rel="stylesheet">
-	<link href="js/lib/magnific-popup/magnific-popup.css" rel="stylesheet">
-    <link href="js/lib/video/YTPlayer.css" rel="stylesheet">
-    <link href="js/lib/flipclock/flipclock.css" rel="stylesheet">
+    
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
 </head>
 
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="initialize();">
+<body onload="initialize();">
 
 	<!-- Navigation -->
 
    
     <!-- Intro Section -->
-    <section id="intro">
-    <div class="video-content">  
-    <div class="video-image wp1 delay-1s">
+    
     <div id="slideshow" class="img-responsive"></div>
     <textarea style="display:none;" id="imgSrc" >
         <?php
@@ -78,32 +61,18 @@
             }
         ?>
     </textarea>
-    </div>
     <input type="hidden" id="timeDuration" value="<?php
         while ($timeList = mysqli_fetch_assoc($timeResult)) {
             echo $timeList['timeDuration'].'000,';
         }
      ?>">
 
-    </section><!-- /#intro --> 
     
 
    
 
     <div id="listencontainer"></div>
-    <!-- Core JavaScript Files -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-
-    <!-- JavaScript -->
-    <script src="js/lib/jquery.appear.js"></script>
-    <script src="js/lib/owl-carousel/owl.carousel.min.js"></script>
-    <script src="js/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/lib/waypoints.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/main.js"></script>
+    
     <script>
 
         // var imgSrc = document.getElementById("imgSrc").value;
