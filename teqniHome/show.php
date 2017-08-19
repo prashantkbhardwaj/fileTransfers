@@ -81,7 +81,7 @@
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
-        var index1 = 0;
+        
         
         for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
@@ -91,7 +91,7 @@
             galleryarray.push(img(imgEx[i].trim()));
         }
 
-        var index = 0;
+        
         var timeDuration = document.getElementById("timeDuration").value;
         var arr = timeDuration.split(',');
         var aru = [];
@@ -118,8 +118,9 @@
         el.onplay = function () {
             clearInterval(sliding);
         };
+        var index = 0;
         el.onended = function () {
-            sliding = setInterval(rotateimages, 5000);
+            sliding = setInterval(rotateimages, aru[index++ %(aru.length)];
             rotateimages();
         };
         return el;
@@ -144,6 +145,7 @@
     }
 
     var sliding;
+    var index1 = 0;
     window.onload = function () {
         sliding = setInterval(rotateimages, aru[index1++ %(aru.length)]);
         rotateimages();
