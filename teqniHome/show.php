@@ -81,7 +81,7 @@
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
-        
+        var index1 = 0;
         
         for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
@@ -119,14 +119,14 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index++ %(aru.length)]);
+            sliding = setInterval(rotateimages, 5000);
             rotateimages();
         };
         return el;
     }
 
     var curimg = 0;
-    var index1 = 0;
+    
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
