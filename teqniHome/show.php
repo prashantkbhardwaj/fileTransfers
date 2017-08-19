@@ -140,8 +140,8 @@
         el.onended = function () {
             console.log(curimg);
             console.log(Number(curimg)%(curimg.length));
-            console.log(arr[Number(curimg%(curimg.length))]);
-            sliding = setInterval(rotateimages, arr[curimg%(curimg.length)]);
+            console.log(aru[Number(curimg%(curimg.length))]);
+            sliding = setInterval(rotateimages, aru[curimg%(curimg.length)]);
             rotateimages();
         };
         return el;
