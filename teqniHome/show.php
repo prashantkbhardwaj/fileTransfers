@@ -136,7 +136,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, arr[curimg]);
+            sliding = setInterval(rotateimages, arr[curimg%(curimg.length-1)]);
             rotateimages();
         };
         return el;
