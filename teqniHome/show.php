@@ -197,17 +197,17 @@
         }
     </script>
     <script type="text/javascript">
-        function initialize()
-        {        
-            $(document).ready(function() {
-                $("#listencontainer").load("listenStop.php");
-                var listenId = setInterval(function() {
-                    $("#listencontainer").load('listenStop.php?randval='+ Math.random());
+        // function initialize()
+        // {        
+        //     $(document).ready(function() {
+        //         $("#listencontainer").load("listenStop.php");
+        //         var listenId = setInterval(function() {
+        //             $("#listencontainer").load('listenStop.php?randval='+ Math.random());
                                                        
-                }, 1000);
-                $.ajaxSetup({ cache: false});       
-            }); 
-        }    
+        //         }, 1000);
+        //         $.ajaxSetup({ cache: false});       
+        //     }); 
+        // }    
     </script>
 </body>
 
