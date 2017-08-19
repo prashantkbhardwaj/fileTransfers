@@ -158,6 +158,7 @@
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
             curimg = (curimg < galleryarray.length-1) ? curimg + 1 : 0;
+            console.log(curimg);
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[curimg].style.width = "50%";
             galleryarray[curimg].style.height = "50%";
