@@ -138,7 +138,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[++curimg%(aru.length-1)]);
+            sliding = setInterval(rotateimages, aru[curimg++%(aru.length)]);
             console.log(curimg%(aru.length));
             rotateimages();
         };
@@ -151,7 +151,7 @@
     //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
     //                    ];
 
-                       console.log(galleryarray);
+    console.log(galleryarray);
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
