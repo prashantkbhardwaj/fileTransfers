@@ -121,7 +121,6 @@
         var source = document.createElement('source');
         for (var i = 0; i < arguments.length; i++) {
             source.src = arguments[i];
-            el.autoplay = true;
             source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
             el.appendChild(source);
         }
@@ -152,9 +151,9 @@
             galleryarray[curimg].style.width = "50%";
             galleryarray[curimg].style.height = "50%";
             document.getElementById('slideshow').appendChild(galleryarray[curimg]);
-            // if (galleryarray[curimg].tagName === "VIDEO") {
-            //     galleryarray[curimg].play();
-            // }
+            if (galleryarray[curimg].tagName === "VIDEO") {
+                if(galleryarray[curimg].paused) galleryarray[curimg].play();
+            }
             $("#slideshow").fadeIn("slow");
         }, 1000);
     }
