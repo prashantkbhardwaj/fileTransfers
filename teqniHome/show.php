@@ -107,7 +107,7 @@
     }
     console.log(aru);
     window.onload = function () {
-        sliding = setInterval(rotateimages, aru[index++ % (aru.length)]);
+        sliding = setInterval(rotateimages, aru[index++]);
         rotateimages();
         //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
@@ -138,7 +138,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index1++ % (aru.length)]);
+            sliding = setInterval(rotateimages, aru[index1++]);
             rotateimages();
         };
         return el;
