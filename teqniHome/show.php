@@ -82,12 +82,15 @@
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
         
-        for (var i = 0; i < imgEx.length - 1; i++) {
-            galleryarray.push(img(imgEx[i].trim()));
-        }
+        
         for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
         }
+
+        for (var i = 0; i < imgEx.length - 1; i++) {
+            galleryarray.push(img(imgEx[i].trim()));
+        }
+
         function img(src) {
         var el = document.createElement('img');
         el.src = src;
