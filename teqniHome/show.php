@@ -120,35 +120,40 @@
         };
         var index = 0;
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[(curimg + 1) % galleryarray.length]);
-                //rotateimages();
+            rotateimages();
         };
         return el;
     }
 
-    var curimg = -1;
+    var currentSlide = -1;
+    var imageCount = 0;
     
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
-        //setTimeout(function () {
-            curimg = (curimg + 1) % galleryarray.length;
-           // console.log(curimg);
-            document.getElementById('slideshow').innerHTML = '';
-            galleryarray[curimg].style.width = "50%";
-            galleryarray[curimg].style.height = "50%";
-            document.getElementById('slideshow').appendChild(galleryarray[curimg]);
-            if (galleryarray[curimg].tagName === "VIDEO") {
-                if(galleryarray[curimg].paused) galleryarray[curimg].play();
-            }
-            $("#slideshow").fadeIn("slow");
-        //}, 1000);
+        currentSlide = (currentSlide + 1) % galleryarray.length;
+        console.log("currentSlide " + currentSlide);
+        document.getElementById('slideshow').innerHTML = '';
+        galleryarray[currentSlide].style.width = "50%";
+        galleryarray[currentSlide].style.height = "50%";
+        document.getElementById('slideshow').appendChild(galleryarray[currentSlide]);
+        if (galleryarray[currentSlide].tagName === "VIDEO") {
+            if(galleryarray[currentSlide].paused) galleryarray[currentSlide].play();
+        }
+        else {
+            setTimeout(rotateimages, aru[imageCount]);
+            imageCount = (imageCount + 1) % aru.length;
+            console.log("imageCount " + imageCount);
+        }
+        $("#slideshow").fadeIn("slow");
     }
 
     var sliding;
     var index1 = 0;
     window.onload = function () {
-    
-        sliding = setInterval(rotateimages, aru[0]);
+        console.log(aru);
+        console.log(galleryarray);
+
+        rotateimages();
         
         //rotateimages();
         //FullScreen won't work in jsFiddle's iframe
