@@ -104,6 +104,8 @@
         for (var i = 0; i < arguments.length; i++) {
             source.src = arguments[i];
             source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+            el.autoplay=true;
+            el.loop = true;
             el.appendChild(source);
         }
         el.onplay = function () {
@@ -130,8 +132,8 @@
         setTimeout(function () {
             curimg = (curimg < galleryarray.length - 1) ? curimg + 1 : 0
             document.getElementById('slideshow').innerHTML = '';
-            galleryarray[curimg].style.width = "100%";
-            galleryarray[curimg].style.height = "100%";
+            galleryarray[curimg].style.width = "50%";
+            galleryarray[curimg].style.height = "50%";
             document.getElementById('slideshow').appendChild(galleryarray[curimg]);
             if (galleryarray[curimg].tagName === "VIDEO") {
                 galleryarray[curimg].play();
