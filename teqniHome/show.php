@@ -99,8 +99,9 @@
 
     var sliding;
     window.onload = function () {
-        // sliding = setInterval(rotateimages, 5000);
+        sliding = setInterval(rotateimages, 5000);
         rotateimages();
+        //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
             if (this.requestFullscreen) {
                 this.requestFullscreen();
