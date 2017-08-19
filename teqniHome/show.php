@@ -133,33 +133,35 @@
             return el;
         }
 
-        var imgSrc = document.getElementById("imgSrc").value;
-        var imgEx = imgSrc.split(',');
-        var vidSrc = document.getElementById("vidSrc").value;
-        var vidEx = vidSrc.split(',');
-        var vidAr = new Array();
-        var galleryarray = new Array();
-        for (var i = 0; i < vidEx.length - 1; i++) {
-            vidAr[i] = vidEx[i];
-        }
-        vidSrc = "vid("+vidAr.toString()+")";
+        // var imgSrc = document.getElementById("imgSrc").value;
+        // var imgEx = imgSrc.split(',');
+        // var vidSrc = document.getElementById("vidSrc").value;
+        // var vidEx = vidSrc.split(',');
+        // var vidAr = new Array();
+        // var galleryarray = new Array();
+        // for (var i = 0; i < vidEx.length - 1; i++) {
+        //     vidAr[i] = vidEx[i];
+        // }
+        // vidSrc = "vid("+vidAr.toString()+")";
         
-        for (var i = 0; i < imgEx.length - 1; i++) {
-            galleryarray[i] = imgEx[i];
-        }
-        galleryarray.push(vidSrc);
-        for (var i = 0; i < galleryarray.length; i++) {
-            galleryarray[i] = galleryarray[i].replace(/"/g, "");
-            console.log(galleryarray[i].replace(/"/g, ""));
-        }
-        console.log(galleryarray);
+        // for (var i = 0; i < imgEx.length - 1; i++) {
+        //     galleryarray[i] = imgEx[i];
+        // }
+        // galleryarray.push(vidSrc);
+        // for (var i = 0; i < galleryarray.length; i++) {
+        //     galleryarray[i] = galleryarray[i].replace(/"/g, "");
+        //     console.log(galleryarray[i].replace(/"/g, ""));
+        // }
+       // console.log(galleryarray);
        // console.log(vidAr);
 
-        // var galleryarray = [img('http://lorempixel.com/400/100/'),
-        //                     img('http://lorempixel.com/400/200/'),
-        //                     img('http://lorempixel.com/400/300/'),
-        //                     vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
-        //                    ];
+        var galleryarray = [img('http://lorempixel.com/400/100/'),
+                            img('http://lorempixel.com/400/200/'),
+                            img('http://lorempixel.com/400/300/'),
+                            vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
+                           ];
+
+        console.log(galleryarray);               
         var curimg = 1;
 
         function rotateimages() {
