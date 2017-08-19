@@ -123,6 +123,8 @@
         }
     }
 
+    var curimg = 1;
+
     function vid() {
         //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
         var el = document.createElement('video');
@@ -136,6 +138,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
+            console.log(curimg);
             console.log(Number(curimg)%(curimg.length));
             console.log(arr[Number(curimg%(curimg.length))]);
             sliding = setInterval(rotateimages, arr[curimg%(curimg.length)]);
@@ -151,8 +154,6 @@
     //                    ];
 
                        console.log(galleryarray);
-    var curimg = 1;
-
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
