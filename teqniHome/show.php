@@ -50,7 +50,7 @@
 </head>
 
 
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom" onload="initialize();">
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 
 	<!-- Navigation -->
 
