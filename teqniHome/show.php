@@ -101,10 +101,10 @@
         console.log(aru);
 
         function img(src) {
-        var el = document.createElement('img');
-        el.src = src;
-        return el;
-    }
+            var el = document.createElement('img');
+            el.src = src;
+            return el;
+        }
 
     function vid() {
         //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
@@ -120,18 +120,18 @@
         };
         var index = 0;
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index++ %(aru.length)]);
-            rotateimages();
+            sliding = setInterval(rotateimages, aru[(curimg + 1) % galleryarray.length]);
+                //rotateimages();
         };
         return el;
     }
 
-    var curimg = 0;
+    var curimg = -1;
     
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
-        setTimeout(function () {
-            curimg = (curimg < galleryarray.length-1) ? curimg + 1 : 0;
+        //setTimeout(function () {
+            curimg = (curimg + 1) % galleryarray.length;
            // console.log(curimg);
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[curimg].style.width = "50%";
@@ -141,14 +141,16 @@
                 if(galleryarray[curimg].paused) galleryarray[curimg].play();
             }
             $("#slideshow").fadeIn("slow");
-        }, 1000);
+        //}, 1000);
     }
 
     var sliding;
     var index1 = 0;
     window.onload = function () {
-        sliding = setInterval(rotateimages, aru[index1++ %(aru.length)]);
-        rotateimages();
+    
+        sliding = setInterval(rotateimages, aru[0]);
+        
+        //rotateimages();
         //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
             if (this.requestFullscreen) {
