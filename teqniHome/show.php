@@ -100,9 +100,6 @@
     <script src="js/lib/jquery.appear.js"></script>
     <script src="js/lib/owl-carousel/owl.carousel.min.js"></script>
     <script src="js/lib/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script src="js/lib/video/jquery.mb.YTPlayer.js"></script> 		
-    <script src="js/lib/flipclock/flipclock.js"></script>
-    <script src="js/lib/jquery.animateNumber.js"></script>
     <script src="js/lib/waypoints.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
