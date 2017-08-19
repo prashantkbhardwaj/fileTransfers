@@ -40,6 +40,8 @@
 	                    img('http://lorempixel.com/400/300/'),
 	                    vid('http://www.w3schools.com/html/movie.mp4', 'http://www.w3schools.com/html/movie.ogg')
 	                   ];
+
+	                   console.log(galleryarray);
 	var curimg = 1;
 
 	function rotateimages() {
