@@ -102,10 +102,11 @@
     var timeDuration = document.getElementById("timeDuration").value;
     var arr = timeDuration.split(',');
     for (var i = 0; i < arr.length-1; i--) {
-        arr[i] = parseInt(arr[i], 10);
+        arr[i] = parseInt(arr[i], 10)
     }
+    console.log(arr);
     window.onload = function () {
-        sliding = setInterval(rotateimages, arr[index++ %(arr.length-1)]);
+        sliding = setInterval(rotateimages, 5000);
         rotateimages();
         //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
@@ -134,7 +135,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, arr[index++ %(arr.length-1)]);
+            sliding = setInterval(rotateimages, 5000);
             rotateimages();
         };
         return el;
