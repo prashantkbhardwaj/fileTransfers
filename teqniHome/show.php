@@ -157,7 +157,7 @@
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
-            curimg = (curimg < galleryarray.length) ? curimg ++ : 0;
+            curimg = (curimg < galleryarray.length) ? curimg + 1 : 0;
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[curimg].style.width = "50%";
             galleryarray[curimg].style.height = "50%";
