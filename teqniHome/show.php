@@ -119,19 +119,19 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index++]);
+            sliding = setInterval(rotateimages, aru[index++ %(aru.length)]);
             rotateimages();
         };
         return el;
     }
 
-    var curimg = 1;
-
+    var curimg = 0;
+    var index1 = 0;
     function rotateimages() {
         $("#slideshow").fadeOut("slow");
         setTimeout(function () {
             curimg = (curimg < galleryarray.length-1) ? curimg + 1 : 0;
-            console.log(curimg);
+           // console.log(curimg);
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[curimg].style.width = "50%";
             galleryarray[curimg].style.height = "50%";
@@ -145,7 +145,7 @@
 
     var sliding;
     window.onload = function () {
-        sliding = setInterval(rotateimages, aru[index++]);
+        sliding = setInterval(rotateimages, aru[index1++ %(aru.length)]);
         rotateimages();
         //FullScreen won't work in jsFiddle's iframe
         document.getElementById('slideshow').onclick = function () {
