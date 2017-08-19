@@ -25,22 +25,14 @@
     <meta name="author" content="Prashant Bhardwaj">
 
     <title>Slide Show</title>
-
-    <!-- Bootstrap Core CSS -->
     
-   
-    <!-- Advanced CSS -->
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
+        
+    </script>
 </head>
 
 
 <body onload="initialize();">
-
-	<!-- Navigation -->
-
-   
-    <!-- Intro Section -->
     
     <div id="slideshow" class="img-responsive"></div>
     <textarea style="display:none;" id="imgSrc" >
@@ -65,23 +57,17 @@
         while ($timeList = mysqli_fetch_assoc($timeResult)) {
             echo $timeList['timeDuration'].'000,';
         }
-     ?>">
-
-    
-
-   
+    ?>">
 
     <div id="listencontainer"></div>
     
     <script>
 
         var imgSrc = document.getElementById("imgSrc").value;
-        // console.log(imgSrc);
         var imgEx = imgSrc.split(',');
         var vidSrc = document.getElementById("vidSrc").value;
         var vidEx = vidSrc.split(',');
         var galleryarray = new Array();
-        
         
         for (var i = 0; i < vidEx.length - 1; i++) {
             galleryarray.push(vid(vidEx[i].trim()));
@@ -91,14 +77,14 @@
             galleryarray.push(img(imgEx[i].trim()));
         }
 
-        
         var timeDuration = document.getElementById("timeDuration").value;
         var arr = timeDuration.split(',');
         var aru = [];
+
         for (var i = 0; i < arr.length-1; i++) {
             if(Number(arr[i])) aru.push(parseInt(arr[i], 10));
         }
-        console.log(aru);
+
 
         function img(src) {
             var el = document.createElement('img');
@@ -106,68 +92,58 @@
             return el;
         }
 
-    function vid() {
-        //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
-        var el = document.createElement('video');
-        var source = document.createElement('source');
-        for (var i = 0; i < arguments.length; i++) {
-            source.src = arguments[i];
-            source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
-            el.appendChild(source);
+        function vid() {
+            var el = document.createElement('video');
+            var source = document.createElement('source');
+            for (var i = 0; i < arguments.length; i++) {
+                source.src = arguments[i];
+                source.type = "video/" + arguments[i].split('.')[arguments[i].split('.').length - 1];
+                el.appendChild(source);
+            }
+            el.onplay = function () {
+                clearInterval(sliding);
+            };
+            var index = 0;
+            el.onended = function () {
+                rotateimages();
+            };
+            return el;
         }
-        el.onplay = function () {
-            clearInterval(sliding);
-        };
-        var index = 0;
-        el.onended = function () {
-            rotateimages();
-        };
-        return el;
-    }
 
-    var currentSlide = -1;
-    var imageCount = 0;
+        var currentSlide = -1;
+        var imageCount = 0;
     
-    function rotateimages() {
-        currentSlide = (currentSlide + 1) % galleryarray.length;
-        //console.log("currentSlide " + currentSlide);
-        document.getElementById('slideshow').innerHTML = '';
-        galleryarray[currentSlide].style.width = "50%";
-        galleryarray[currentSlide].style.height = "50%";
-        document.getElementById('slideshow').appendChild(galleryarray[currentSlide]);
-        if (galleryarray[currentSlide].tagName === "VIDEO") {
-            if(galleryarray[currentSlide].paused) galleryarray[currentSlide].play();
-        }
-        else {
-            setTimeout(rotateimages, aru[imageCount]);
-            imageCount = (imageCount + 1) % aru.length;
-            //console.log("imageCount " + imageCount);
-        }
-    }
-
-    var sliding;
-    var index1 = 0;
-    window.onload = function () {
-        //console.log(aru);
-        //console.log(galleryarray);
-
-        rotateimages();
-        
-        //rotateimages();
-        //FullScreen won't work in jsFiddle's iframe
-        document.getElementById('slideshow').onclick = function () {
-            if (this.requestFullscreen) {
-                this.requestFullscreen();
-            } else if (this.msRequestFullscreen) {
-                this.msRequestFullscreen();
-            } else if (this.mozRequestFullScreen) {
-                this.mozRequestFullScreen();
-            } else if (this.webkitRequestFullscreen) {
-                this.webkitRequestFullscreen();
+        function rotateimages() {
+            currentSlide = (currentSlide + 1) % galleryarray.length;
+            document.getElementById('slideshow').innerHTML = '';
+            galleryarray[currentSlide].style.width = "50%";
+            galleryarray[currentSlide].style.height = "50%";
+            document.getElementById('slideshow').appendChild(galleryarray[currentSlide]);
+            if (galleryarray[currentSlide].tagName === "VIDEO") {
+                if(galleryarray[currentSlide].paused) galleryarray[currentSlide].play();
+            }
+            else {
+                setTimeout(rotateimages, aru[imageCount]);
+                imageCount = (imageCount + 1) % aru.length;
             }
         }
-    }
-    
+
+        var sliding;
+        var index1 = 0;
+        window.onload = function () {
+            rotateimages();
+            document.getElementById('slideshow').onclick = function () {
+                if (this.requestFullscreen) {
+                    this.requestFullscreen();
+                } else if (this.msRequestFullscreen) {
+                    this.msRequestFullscreen();
+                } else if (this.mozRequestFullScreen) {
+                    this.mozRequestFullScreen();
+                } else if (this.webkitRequestFullscreen) {
+                    this.webkitRequestFullscreen();
+                }
+            }
+        }
     </script>
     <script type="text/javascript">
         function initialize()
