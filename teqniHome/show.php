@@ -124,7 +124,7 @@
     }
 
     var curimg = 0;
-    index = 0;
+    var index1 = 0;
     function vid() {
         //Accepts any number of ‘src‘ to a same video ('.mp4', '.ogg' or '.webm')
         var el = document.createElement('video');
@@ -138,8 +138,7 @@
             clearInterval(sliding);
         };
         el.onended = function () {
-            sliding = setInterval(rotateimages, aru[index++ % (aru.length)]);
-            console.log(curimg%(aru.length));
+            sliding = setInterval(rotateimages, aru[index1++ % (aru.length)]);
             rotateimages();
         };
         return el;
