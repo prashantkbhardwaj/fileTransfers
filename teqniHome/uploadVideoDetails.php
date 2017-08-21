@@ -2,8 +2,8 @@
  	if($_SERVER['REQUEST_METHOD']=='POST'){
  
 	 	$video = $_POST['video'];
-	 	//$videx = explode("/", $video);
-	 	//$video = $videx[6];
+	 	$videx = explode("/", $video);
+	 	$video = $videx[6];
 	    $uploader = $_POST['uploader'];
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
