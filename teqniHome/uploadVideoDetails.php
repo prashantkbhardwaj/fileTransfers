@@ -3,7 +3,7 @@
  
 	 	$video = $_POST['video'];
 	 	$videx = explode("/", $video);
-	 	$video = $videx[6];
+	 	$video = $videx[7];
 	    $uploader = $_POST['uploader'];
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
