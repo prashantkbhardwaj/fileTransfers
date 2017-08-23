@@ -12,7 +12,7 @@
 
         $qrCode = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=".$level1."_".$level2."_".$level3."_".$sessionName.;
         
-        $query = "UPDATE volleyupload SET sessionName = '{$sessionName}', level1 = '{$level1}', level2 = '{$level2}', level3 = '{$level3}', qrCode = '{$qrCode}' WHERE uploader = '{$uploader}' AND sessionName = '{$oldSession}'";
+        $query = "UPDATE volleyupload SET sessionName = '{$sessionName}', level1 = '{$level1}', level2 = '{$level2}', level3 = '{$level3}', qrcode = '{$qrCode}' WHERE uploader = '{$uploader}' AND sessionName = '{$oldSession}'";
         $result = mysqli_query($conn, $query);
 
         if ($result) {
