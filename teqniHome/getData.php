@@ -2,7 +2,8 @@
 <?php require_once("includes/functions.php");?>
 <?php
 	$user = $_POST['user'];
-	$query = "SELECT * FROM volleyupload WHERE uploader = '{$user}' ORDER BY pos DESC";
+	$sessionName = $_POST['session'];
+	$query = "SELECT * FROM volleyupload WHERE uploader = '{$user}' AND sessionName = '{$sessionName}' ORDER BY pos DESC";
 	$result = mysqli_query($conn, $query);
 	$i = 0;
 	$response = array();
