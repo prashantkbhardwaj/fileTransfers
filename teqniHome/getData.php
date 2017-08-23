@@ -1,7 +1,8 @@
 <?php require_once("includes/db_connection.php");?>
 <?php require_once("includes/functions.php");?>
 <?php
-	$query = "SELECT * FROM volleyupload ORDER BY pos DESC";
+	$user = $_POST['user'];
+	$query = "SELECT * FROM volleyupload WHERE uploader = '{$user}' ORDER BY pos DESC";
 	$result = mysqli_query($conn, $query);
 	$i = 0;
 	$response = array();
