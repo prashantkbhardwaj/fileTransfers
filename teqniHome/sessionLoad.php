@@ -7,8 +7,7 @@
 	$response = array();
 	$response['sessionData'] = "";
 	while ($list = mysqli_fetch_assoc($result)) {
-		$response['sessionData'] = $list['sessionName'];
+		$response['sessionData'] .= $list['sessionName'].",";
 	}
-	echo $response['sessionData'];
 	echo json_encode($response);
 ?>
