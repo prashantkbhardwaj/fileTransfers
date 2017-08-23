@@ -5,6 +5,7 @@
 	$query = "SELECT DISTINCT(sessionName) FROM volleyupload WHERE uploader = '{$user}' ORDER BY id DESC";
 	$result = mysqli_query($conn, $query);
 	$response = array();
+	$response["success"] = true; 
 	$response['sessionData'] = "";
 	while ($list = mysqli_fetch_assoc($result)) {
 		$response['sessionData'] .= $list['sessionName'].",";
