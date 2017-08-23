@@ -5,7 +5,7 @@
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
 	    $level3 = $_POST['level3'];
-	    $sessionName = $_POST['sessionname'];
+	    $sessionName = $_POST['sessionName'];
 	  	require_once("includes/db_connection.php");
 	 	$sql = "INSERT INTO volleyupload (uploader, level1, level2, level3, sessionName) VALUES ('{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$sessionName}')";
 		if(mysqli_query($conn,$sql)){
