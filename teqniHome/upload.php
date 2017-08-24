@@ -6,7 +6,6 @@
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
 	    $level3 = $_POST['level3'];
-	    $pictureName = $_POST['picturename'];
 	    $sessionName = $_POST['sessionname'];
 	    $timeDuration = $_POST['timeduration'];
 	    $qrcode = $_POST['qrcode'];
@@ -21,7 +20,7 @@
 	 	$list = mysqli_fetch_array($result);
     	$pos = $list[0]+1; 
 	 	$actualpath = "http://192.168.1.104/fileTransfers/teqniHome/$path";
-	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, pictureName, sessionName, timeDuration, dateUpload, qrcode, pos) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$pictureName}', '{$sessionName}', '{$timeDuration}', '{$dateUpload}', '{$qrcode}', '{$pos}')";
+	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, sessionName, timeDuration, dateUpload, qrcode, pos) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$sessionName}', '{$timeDuration}', '{$dateUpload}', '{$qrcode}', '{$pos}')";
 		if(mysqli_query($conn,$sql)){
 		 	file_put_contents($path,base64_decode($image));
 		 	echo "Successfully Uploaded";

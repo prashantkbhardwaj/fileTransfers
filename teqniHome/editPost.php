@@ -4,11 +4,10 @@
 <?php
     if ($_POST['postid']!="") {
         $postid = $_POST['postid']; 
-        $name = $_POST['name'];
         $timeDuration = $_POST['timeDuration'];
         $pos = $_POST['pos'];
         
-        $query = "UPDATE volleyupload SET pictureName = '{$name}', timeDuration = '{$timeDuration}', pos = '{$pos}' WHERE id = '{$postid}' LIMIT 1";
+        $query = "UPDATE volleyupload SET timeDuration = '{$timeDuration}', pos = '{$pos}' WHERE id = '{$postid}' LIMIT 1";
         $result = mysqli_query($conn, $query);
 
         if ($result) {

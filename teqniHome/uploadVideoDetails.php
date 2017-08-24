@@ -8,7 +8,6 @@
 	    $level1 = $_POST['level1'];
 	    $level2 = $_POST['level2'];
 	    $level3 = $_POST['level3'];
-	    $pictureName = $_POST['picturename'];
 	    $sessionName = $_POST['sessionname'];
 	    $qrcode = $_POST['qrcode'];
 	  	require_once("includes/db_connection.php");
@@ -17,7 +16,7 @@
 		$dateUpload = date("d M, Y | h:i a");
 	 	$path = "uploads/$video";
 	 	$actualpath = "http://192.168.1.104/fileTransfers/teqniHome/$path";
-	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, pictureName, sessionName, timeDuration, dateUpload, qrcode) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$pictureName}', '{$sessionName}', '0', '{$dateUpload}', '{$qrcode}')";
+	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, sessionName, timeDuration, dateUpload, qrcode) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$sessionName}', '0', '{$dateUpload}', '{$qrcode}')";
 		if(mysqli_query($conn,$sql)){
 		 	echo "Successfully Uploaded";
 		}

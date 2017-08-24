@@ -17,5 +17,6 @@
     $response["level1"] = $list['level1'];
     $response["level2"] = $list['level2'];
     $response["level3"] = $list['level3'];
+    $response["description"] = $list['description'];
     echo json_encode($response);
 ?>
