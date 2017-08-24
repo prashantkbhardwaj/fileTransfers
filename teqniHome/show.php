@@ -38,7 +38,7 @@
     <textarea style="display:none;" id="imgSrc" >
         <?php
             while ($list = mysqli_fetch_assoc($result)) { 
-                if ($list['timeDuration']!='0') { 
+                if ($list['timeDuration']!='0'&&$list['imgPath']!="") { 
                     echo $list['imgPath'].",";
                 } 
             }
@@ -47,7 +47,7 @@
     <textarea style="display:none;" id="vidSrc" >
         <?php
             while ($listVid = mysqli_fetch_assoc($resultVid)) { 
-                if ($listVid['timeDuration']=='0') { 
+                if ($listVid['timeDuration']=='0'&&$listVid['imgPath']!="") { 
                     echo $listVid['imgPath'].",";
                 } 
             }
@@ -55,7 +55,9 @@
     </textarea>
     <input type="hidden" id="timeDuration" value="<?php
         while ($timeList = mysqli_fetch_assoc($timeResult)) {
-            echo $timeList['timeDuration'].'000,';
+            if ($timeList['imgPath']!='') {
+                echo $timeList['timeDuration'].'000,';
+            }
         }
     ?>">
 
