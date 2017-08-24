@@ -32,7 +32,7 @@
 </head>
 
 
-<body onload="initialize();">
+<body>
     
     <div id="slideshow" class="img-responsive"></div>
     <textarea style="display:none;" id="imgSrc" >
@@ -145,11 +145,7 @@
                     this.webkitRequestFullscreen();
                 }
             }
-        }
-    </script>
-    <script type="text/javascript">
-        function initialize()
-        {        
+
             $(document).ready(function() {
                 $("#listencontainer").load("listenStop.php");
                 var listenId = setInterval(function() {
@@ -158,7 +154,7 @@
                 }, 1000);
                 $.ajaxSetup({ cache: false});       
             }); 
-        }    
+        }
     </script>
 </body>
 
