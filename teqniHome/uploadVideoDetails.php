@@ -15,7 +15,7 @@
 	 	date_default_timezone_set("Asia/Kolkata");
 		$dateUpload = date("d M, Y | h:i a");
 	 	$path = "uploads/$video";
-	 	$actualpath = "http://192.168.1.106/fileTransfers/teqniHome/$path";
+	 	$actualpath = "http://192.168.1.102/fileTransfers/teqniHome/$path";
 	 	$sql = "INSERT INTO volleyupload (imgPath, uploader, level1, level2, level3, sessionName, timeDuration, dateUpload, qrcode) VALUES ('{$actualpath}','{$uploader}', '{$level1}', '{$level2}', '{$level3}', '{$sessionName}', '0', '{$dateUpload}', '{$qrcode}')";
 		if(mysqli_query($conn,$sql)){
 		 	echo "Successfully Uploaded";
