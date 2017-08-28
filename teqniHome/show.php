@@ -29,26 +29,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
         
     </script>
-    <style type="text/css">
-        body
-        {
-            width:1920px;
-            background-color: #f8e0b3;
-            height:1080px;
-        }
-
-        @media screen and (min-width: 500px) {
-           body {
-              width:420px;
-           }
-        }
-
-        @media screen and (min-width: 800px) {
-           body {
-              width:720px;
-           }
-        }
-    </style>
 </head>
 
 
@@ -139,7 +119,7 @@
             currentSlide = (currentSlide + 1) % galleryarray.length;
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[currentSlide].style.width = "100%";
-            galleryarray[currentSlide].style.height = "100%";
+            galleryarray[currentSlide].style.height = "auto";
             document.getElementById('slideshow').appendChild(galleryarray[currentSlide]);
             if (galleryarray[currentSlide].tagName === "VIDEO") {
                 if(galleryarray[currentSlide].paused) galleryarray[currentSlide].play();
