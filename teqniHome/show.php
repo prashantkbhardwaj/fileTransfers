@@ -29,6 +29,26 @@
     <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
         
     </script>
+    <style type="text/css">
+        body
+        {
+            width:1920px;
+            background-color: #f8e0b3;
+            height:1080px;
+        }
+
+        @media screen and (min-width: 500px) {
+           body {
+              width:420px;
+           }
+        }
+
+        @media screen and (min-width: 800px) {
+           body {
+              width:720px;
+           }
+        }
+    </style>
 </head>
 
 
