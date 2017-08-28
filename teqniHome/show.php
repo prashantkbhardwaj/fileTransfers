@@ -54,7 +54,7 @@
 
 <body>
     
-    <div id="slideshow" class="img-responsive"></div>
+    <div id="slideshow" class="img-responsive" style="height: 100%; width: 100;"></div>
     <textarea style="display:none;" id="imgSrc" >
         <?php
             while ($list = mysqli_fetch_assoc($result)) { 
