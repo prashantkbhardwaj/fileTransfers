@@ -119,7 +119,7 @@
             currentSlide = (currentSlide + 1) % galleryarray.length;
             document.getElementById('slideshow').innerHTML = '';
             galleryarray[currentSlide].style.width = "100%";
-            galleryarray[currentSlide].style.height = "auto";
+            galleryarray[currentSlide].style.height = "100%";
             document.getElementById('slideshow').appendChild(galleryarray[currentSlide]);
             if (galleryarray[currentSlide].tagName === "VIDEO") {
                 if(galleryarray[currentSlide].paused) galleryarray[currentSlide].play();
@@ -137,6 +137,7 @@
             document.getElementById('slideshow').onclick = function () {
                 if (this.requestFullscreen) {
                     this.requestFullscreen();
+                    console.log(this);
                 } else if (this.msRequestFullscreen) {
                     this.msRequestFullscreen();
                 } else if (this.mozRequestFullScreen) {
