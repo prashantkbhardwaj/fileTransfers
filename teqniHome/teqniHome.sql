@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
+-- version 4.2.12deb2+deb8u2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 14, 2017 at 08:15 AM
--- Server version: 5.7.19-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Generation Time: Sep 01, 2017 at 11:16 AM
+-- Server version: 5.5.57-0+deb8u1
+-- PHP Version: 5.6.30-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `teqniHome`
@@ -26,22 +26,22 @@ SET time_zone = "+00:00";
 -- Table structure for table `levelNames`
 --
 
-CREATE TABLE `levelNames` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `levelNames` (
+`id` int(11) NOT NULL,
   `level1` varchar(100) NOT NULL,
   `level2` varchar(100) NOT NULL,
   `level3` varchar(100) NOT NULL,
   `level1opt` varchar(200) NOT NULL,
   `level2opt` varchar(200) NOT NULL,
   `level3opt` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `levelNames`
 --
 
 INSERT INTO `levelNames` (`id`, `level1`, `level2`, `level3`, `level1opt`, `level2opt`, `level3opt`) VALUES
-(1, 'University', 'Branch', 'Year', 'VIT,SRM,BITS', 'CSE,ECE,Mech,Civil', '1,2,3,4');
+(1, 'University', 'Branch', 'Year', 'VIT,SRM,BITS', 'CSE,ECE,Mech,Civil_Law,MCA,BCA_Bio,History,Arts', '1,2,3,4_first,second,third_hons,ug,pg_job,gre,mba/practice,higher studies_business,ceo_startup,teacher/research,doctor_professor,scientist_artist,painter,singer');
 
 -- --------------------------------------------------------
 
@@ -49,18 +49,18 @@ INSERT INTO `levelNames` (`id`, `level1`, `level2`, `level3`, `level1opt`, `leve
 -- Table structure for table `listenData`
 --
 
-CREATE TABLE `listenData` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `listenData` (
+`id` int(11) NOT NULL,
   `data` varchar(400) NOT NULL,
   `state` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `listenData`
 --
 
 INSERT INTO `listenData` (`id`, `data`, `state`) VALUES
-(1, 'VIT_CSE_1_ses one', 2);
+(1, 'VIT_ECE_first_test spinner', 0);
 
 -- --------------------------------------------------------
 
@@ -68,13 +68,13 @@ INSERT INTO `listenData` (`id`, `data`, `state`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+`id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `hashed_password` varchar(100) NOT NULL,
   `usertype` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -84,7 +84,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `hashed_password`, `usertype`) VA
 (2, 'Prashant Bhardwaj', 'pkb@gmail.com', '$2y$10$YjMwNTA4NWEzZTVhN2Q4NuT9ZCZawFZXP8ZS1tSzrWZ3PzyWfb7w6', 'Super User'),
 (3, 'Shashank Bhardwaj', 'skb@gmail.com', '$2y$10$YmFmYjZmOWI2MmI4OWNkZe7QHytHnCEcNTvW0HakopzelB4DSadR6', 'Teacher'),
 (4, 'Abhishek Singh', 'as@gmail.com', '$2y$10$YmI3ODM2NGI0Zjg4ODM4ZOe1KPSLJcx2/Kx4YIePWmX/u1VWkA5ua', 'Student'),
-(5, 'Prasang Sharma', 'ps@gmail.com', '$2y$10$N2ViNTdjZTQ4ZmI1ODk0YeMWmLdgpPJj4P9bI/LaoNopglriVwle2', 'Teacher');
+(5, 'Prasang Sharma', 'ps@gmail.com', '$2y$10$N2ViNTdjZTQ4ZmI1ODk0YeMWmLdgpPJj4P9bI/LaoNopglriVwle2', 'Teacher'),
+(6, 'Monu', 'mb@gmail.com', '$2y$10$NTJmNjY4NDJjY2RlMDM5N.ARTkHkPnN45kn294AsD45R.BcWfcR72', 'Teacher');
 
 -- --------------------------------------------------------
 
@@ -92,31 +93,27 @@ INSERT INTO `users` (`id`, `name`, `username`, `hashed_password`, `usertype`) VA
 -- Table structure for table `volleyupload`
 --
 
-CREATE TABLE `volleyupload` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `volleyupload` (
+`id` int(11) NOT NULL,
   `imgPath` varchar(400) NOT NULL,
   `uploader` varchar(100) NOT NULL,
   `level1` varchar(100) NOT NULL,
   `level2` varchar(100) NOT NULL,
   `level3` varchar(100) NOT NULL,
-  `pictureName` varchar(100) NOT NULL,
   `sessionName` varchar(100) NOT NULL,
   `timeDuration` varchar(50) NOT NULL,
   `dateUpload` varchar(100) NOT NULL,
-  `qrcode` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `qrcode` text NOT NULL,
+  `pos` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `volleyupload`
 --
 
-INSERT INTO `volleyupload` (`id`, `imgPath`, `uploader`, `level1`, `level2`, `level3`, `pictureName`, `sessionName`, `timeDuration`, `dateUpload`, `qrcode`) VALUES
-(33, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813024803.png', 'skb@gmail.com', 'SRM', 'Mech', '3', 'Car front', 'ses one', '5', '13 Aug, 2017 | 08:18 pm', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SRM_Mech_3_ses one'),
-(34, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813025126.png', 'skb@gmail.com', 'BITS', 'ECE', '2', 'Car board', 'sess two', '3', '13 Aug, 2017 | 08:21 pm', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BITS_ECE_2_sess two'),
-(35, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813025213.png', 'skb@gmail.com', 'VIT', 'CSE', '4', 'pkb', 'sess three', '6', '13 Aug, 2017 | 08:22 pm', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=VIT_CSE_4_sess three'),
-(36, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813025414.png', 'skb@gmail.com', 'SRM', 'Mech', '2', 'car board', 'sess four', '6', '13 Aug, 2017 | 08:24 pm', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=SRM_Mech_2_sess four'),
-(37, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813062601.png', 'skb@gmail.com', 'BITS', 'ECE', '2', 'car back', 'sess two', '10', '13 Aug, 2017 | 11:56 pm', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BITS_ECE_2_sess two'),
-(38, 'http://www.vit5icnn2018.com/teqniHome/uploads/20170813082510.png', 'skb@gmail.com', 'VIT', 'CSE', '1', 'me', 'ses one', '5', '14 Aug, 2017 | 01:55 am', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=VIT_CSE_1_ses one');
+INSERT INTO `volleyupload` (`id`, `imgPath`, `uploader`, `level1`, `level2`, `level3`, `sessionName`, `timeDuration`, `dateUpload`, `qrcode`, `pos`, `description`) VALUES
+(1, '', 'skb@gmail.com', 'BITS', 'History', 'professor', 'Test Session', '', '', 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=BITS_History_professor_Test Session', 0, 'Test session for demo');
 
 --
 -- Indexes for dumped tables
@@ -126,25 +123,25 @@ INSERT INTO `volleyupload` (`id`, `imgPath`, `uploader`, `level1`, `level2`, `le
 -- Indexes for table `levelNames`
 --
 ALTER TABLE `levelNames`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `listenData`
 --
 ALTER TABLE `listenData`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `volleyupload`
 --
 ALTER TABLE `volleyupload`
-  ADD PRIMARY KEY (`id`);
+ ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -154,22 +151,22 @@ ALTER TABLE `volleyupload`
 -- AUTO_INCREMENT for table `levelNames`
 --
 ALTER TABLE `levelNames`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `listenData`
 --
 ALTER TABLE `listenData`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `volleyupload`
 --
 ALTER TABLE `volleyupload`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
